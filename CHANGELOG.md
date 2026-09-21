@@ -1,3 +1,11 @@
+## [1.2.4](https://github.com/mini-app-polis/common-typescript-utils/compare/v1.2.3...v1.2.4) (2026-09-21)
+
+
+### Bug Fixes
+
+* **deps:** bump the js-minor-and-patch group with 2 updates ([d6ba25a](https://github.com/mini-app-polis/common-typescript-utils/commit/d6ba25a6e3b664fbb6bee061b84b341a9114238b))
+* **deps:** bump zod from 3.25.76 to 4.6.2 ([091b0b0](https://github.com/mini-app-polis/common-typescript-utils/commit/091b0b0d120c4f405dfa480b5a137d0f38d53e2f))
+
 ## [1.2.3](https://github.com/mini-app-polis/common-typescript-utils/compare/v1.2.2...v1.2.3) (2026-09-10)
 
 
