@@ -1,4 +1,15 @@
-import type { ZodIssue } from "zod";
+/**
+ * The two fields validationError reads from an issue. Typed structurally
+ * rather than as zod's ZodIssue so the signature does not pin a zod major:
+ * zod 3 issues and zod 4 issues both satisfy it, and a consumer on either
+ * version can pass `err.issues` straight through. Importing ZodIssue here
+ * made this package's zod version part of its public API — bumping it to
+ * zod 4 broke every consumer still on zod 3 at the type level.
+ */
+export type ValidationIssue = {
+  readonly path: readonly PropertyKey[];
+  readonly message: string;
+};
 
 const VERSION = "v1" as const;
 
@@ -48,8 +59,10 @@ export const CommonErrors = {
   internalError(message = "Internal server error"): ErrorEnvelope {
     return error("INTERNAL", message);
   },
-  validationError(issues: ZodIssue[]): ErrorEnvelope {
-    const message = issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
+  validationError(issues: readonly ValidationIssue[]): ErrorEnvelope {
+    const message = issues
+      .map((i) => `${i.path.map(String).join(".")}: ${i.message}`)
+      .join("; ");
     return error("VALIDATION_ERROR", message || "Validation failed");
   },
 };
