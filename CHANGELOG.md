@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/mini-app-polis/common-typescript-utils/compare/v1.2.4...v1.2.5) (2026-09-28)
+
+
+### Bug Fixes
+
+* **response:** type validationError issues structurally, not as a zod ZodIssue ([67efc1c](https://github.com/mini-app-polis/common-typescript-utils/commit/67efc1cfaa64afa97433d333b0c75680bc997a03))
+
 ## [1.2.4](https://github.com/mini-app-polis/common-typescript-utils/compare/v1.2.3...v1.2.4) (2026-09-21)
 
 
