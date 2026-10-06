@@ -1,0 +1,20 @@
+# Accepted findings for the SEC-003 dependency audit. osv-scanner loads
+# this file automatically from the directory of the lockfile it scans.
+#
+# Only list an advisory here when no fixed version exists to override to;
+# anything with a fix goes in package.json pnpm.overrides instead. Every
+# entry carries an ignoreUntil so it re-surfaces for review rather than
+# being suppressed forever.
+
+[[IgnoredVulns]]
+id = "GHSA-vfj7-8cjw-p6xm"
+ignoreUntil = 2027-01-06
+reason = """
+braces <=3.0.3: unbounded recursion on deeply nested brace patterns. No
+patched release exists (3.0.3 is latest) and micromatch 4.0.8, also latest,
+depends on it, so there is nothing to override to. Reached only through
+semantic-release -> micromatch, which runs in the release job against this
+repo's own commit history and config globs -- no untrusted input, and none
+of it ships: the published package's only runtime dependency is zod.
+Remove once braces publishes a fix and add a pnpm override for it instead.
+"""
